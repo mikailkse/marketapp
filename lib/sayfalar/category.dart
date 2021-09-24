@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutterprojecy/urun_detay.dart';
-
+import 'package:flutterprojecy/sayfalar/product_details.dart';
 
 class Kategori extends StatefulWidget {
   final String kategori;
 
-  const Kategori({required this.kategori}) ;
+  const Kategori({required this.kategori});
 
   @override
   _KategoriState createState() => _KategoriState();
 }
 
 class _KategoriState extends State<Kategori> {
- List<Widget>? gosterilecekListe;
+  List<Widget>? gosterilecekListe;
 
   @override
   void initState() {
@@ -126,17 +125,21 @@ class _KategoriState extends State<Kategori> {
     }
   }
 
-  Widget urunKarti(String isim, String fiyat, String resimYolu, {bool mevcut = false}) {
+  Widget urunKarti(String isim, String fiyat, String resimYolu,
+      {bool mevcut = false}) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>UrunDetay(
-          isim: isim,
-          fiyat: fiyat,
-          resimYolu: resimYolu,
-          mevcut: mevcut,
-        )));
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => UrunDetay(
+                      isim: isim,
+                      fiyat: fiyat,
+                      resimYolu: resimYolu,
+                      mevcut: mevcut,
+                    )));
       },
-          child: Container(
+      child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.0),
             color: Colors.white,
@@ -152,7 +155,7 @@ class _KategoriState extends State<Kategori> {
           children: <Widget>[
             Hero(
               tag: resimYolu,
-                          child: Container(
+              child: Container(
                 width: 120.0,
                 height: 80.0,
                 decoration: BoxDecoration(
@@ -195,7 +198,7 @@ class _KategoriState extends State<Kategori> {
       crossAxisSpacing: 12.0,
       padding: EdgeInsets.all(10.0),
       childAspectRatio: 1,
-
+      children: gosterilecekListe!,
     );
   }
 }
